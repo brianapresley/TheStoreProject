@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -33,6 +34,11 @@ namespace TheStoreProject
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            string connstr = @"Data Source=LAPTOP-5UPQ1A8N\SQLEXPRESS;Initial Catalog=TheStoreDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+
+            services.AddDbContext<Models.TheStoreDB>
+                (options => options.UseSqlServer(connstr));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
